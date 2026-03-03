@@ -2,11 +2,11 @@
 #include <cmath>
 
 // ===================== USER SETTINGS =====================
-constexpr float kBeamSpacing_m = 0.03f;   // distance between adjacent beams
-constexpr uint8_t N_BEAMS = 6;
+constexpr float kBeamSpacing_m = 0.035f;   // distance between adjacent beams
+constexpr uint8_t N_BEAMS = 5;
 
 // Change these to match your wiring
-const uint8_t BEAM_PINS[N_BEAMS] = {0, 1, 2, 3, 4, 5};
+const uint8_t BEAM_PINS[N_BEAMS] = {0, 1, 2, 3, 4};
 
 // If sensor pulls LOW when broken → FALLING
 // If sensor pulls HIGH when broken → RISING
@@ -60,7 +60,6 @@ void isr1(){ handleBeamISR(1); }
 void isr2(){ handleBeamISR(2); }
 void isr3(){ handleBeamISR(3); }
 void isr4(){ handleBeamISR(4); }
-void isr5(){ handleBeamISR(5); }
 
 // ---------- Setup ----------
 void setup() {
@@ -76,7 +75,6 @@ void setup() {
   attachInterrupt(digitalPinToInterrupt(BEAM_PINS[2]), isr2, kInterruptEdge);
   attachInterrupt(digitalPinToInterrupt(BEAM_PINS[3]), isr3, kInterruptEdge);
   attachInterrupt(digitalPinToInterrupt(BEAM_PINS[4]), isr4, kInterruptEdge);
-  attachInterrupt(digitalPinToInterrupt(BEAM_PINS[5]), isr5, kInterruptEdge);
   resetSession();
 }
 
