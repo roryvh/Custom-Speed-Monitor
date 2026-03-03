@@ -130,7 +130,7 @@ void loop() {
 
     // End of monitor → final summary
     if (start) {
-      Serial.println("v1, v2, v3, v4, v5");
+      Serial.println("v1, v2, v3, v4");
       start = false;
     }
 
