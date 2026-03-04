@@ -65,7 +65,7 @@ if __name__ == "__main__":
         plt.figure(figsize=(10, 6))
         box = plt.boxplot(
             [data[:, i] for i in range(data.shape[1])],
-            labels=[f"v{i+1}" for i in range(data.shape[1])],
+            labels=[f"velocity {i+1}" for i in range(data.shape[1])],
             patch_artist=True  # Enable filling boxes with color
         )
         
@@ -118,7 +118,7 @@ if __name__ == "__main__":
         rpms, velocities = zip(*points)
         
         # Plot the scatter points
-        plt.scatter(rpms, velocities, label=f'v{interval_idx+1} Data', color=colors(interval_idx))
+        plt.scatter(rpms, velocities, label=f'velocity {interval_idx+1} Data', color=colors(interval_idx))
         
         # Calculate and plot the trendline (1st degree polynomial fit)
         if len(rpms) > 1: # Need at least 2 points for a line
@@ -127,7 +127,7 @@ if __name__ == "__main__":
             
             # Generate x-values for the trendline to span the range of RPMs
             rpm_range = np.linspace(min(rpms), max(rpms), 100)
-            plt.plot(rpm_range, trend_line(rpm_range), linestyle='--', color=colors(interval_idx), label=f'v{interval_idx+1} Trend')
+            plt.plot(rpm_range, trend_line(rpm_range), linestyle='--', color=colors(interval_idx), label=f'velocity {interval_idx+1} Trend')
 
     plt.title('Average Interval Velocity vs. RPM')
     plt.xlabel('RPM')
