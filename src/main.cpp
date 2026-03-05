@@ -6,7 +6,7 @@ constexpr float kBeamSpacing_m = 0.035f;   // distance between adjacent beams
 constexpr uint8_t N_BEAMS = 5;
 
 // Change these to match your wiring
-const uint8_t BEAM_PINS[N_BEAMS] = {0, 1, 2, 3, 4};
+const uint8_t BEAM_PINS[N_BEAMS] = {1, 2, 3, 4, 5};
 
 // If sensor pulls LOW when broken → FALLING
 // If sensor pulls HIGH when broken → RISING
@@ -77,6 +77,18 @@ void setup() {
   attachInterrupt(digitalPinToInterrupt(BEAM_PINS[4]), isr4, kInterruptEdge);
   resetSession();
 }
+
+/*
+// ---------- Main loop ----------
+void loop() {
+  for (uint8_t i = 0; i < N_BEAMS; i++) {
+    Serial.print(digitalRead(BEAM_PINS[i]));
+    Serial.print(" ");
+  }
+  Serial.println();
+  delay(100);
+}
+*/
 
 // ---------- Main loop ----------
 void loop() {
