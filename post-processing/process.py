@@ -137,4 +137,3 @@ if __name__ == "__main__":
     plt.savefig(os.path.join(SCRIPT_DIR, "plots", 'aggregate_velocity_vs_rpm.png'))
     plt.close()
     print("Aggregate scatter plot saved as 'aggregate_velocity_vs_rpm.png'")
-
