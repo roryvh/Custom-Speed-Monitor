@@ -90,6 +90,7 @@ void loop() {
 }
 */
 
+
 // ---------- Main loop ----------
 void loop() {
   uint32_t t[N_BEAMS];
@@ -137,7 +138,6 @@ void loop() {
         }
       }
 
-      float avg = sum / n;
     }
 
     // End of monitor → final summary
@@ -145,22 +145,23 @@ void loop() {
       Serial.println("v1, v2, v3, v4");
       start = false;
     }
-
+    constexpr int8_t decimalPts = 6;
     if (i == N_BEAMS - 1) {
       float v = speed_mps(sessionTime_us[0],
                              sessionTime_us[1]);
 
-      Serial.print(String(v));
+      Serial.print(v, decimalPts);
 
       for (uint8_t k = 1; k < N_BEAMS - 1; k++) {
         float v = speed_mps(sessionTime_us[k],
                              sessionTime_us[k + 1]);
 
-        Serial.print(", " + String(v));
-
+        Serial.print(", ");
+        Serial.print(v, decimalPts);
       }
       Serial.println();
       resetSession();
     }
   }
 }
+
